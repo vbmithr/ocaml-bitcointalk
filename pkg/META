@@ -1,0 +1,7 @@
+description = "Parse BitcoinTalk in OCaml"
+version = "%%VERSION%%"
+requires = ""
+archive(byte) = "bitcointalk.cma"
+archive(native) = "bitcointalk.cmxa"
+plugin(byte) = "bitcointalk.cma"
+plugin(native) = "bitcointalk.cmxs"
