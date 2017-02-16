@@ -34,9 +34,14 @@ module Board : sig
   } [@@deriving xml,fields]
 end
 
+module Time : sig
+  open Core.Std
+  type t = Time_ns.t [@@deriving xml]
+end
+
 module Article : sig
   type t = {
-    time : string ;
+    time : Time.t ;
     id : int ;
     subject : string ;
     body : string ;
@@ -49,7 +54,7 @@ end
 
 module Recent_post : sig
   type t = {
-    time : string ;
+    time : Time.t ;
     id : int ;
     subject : string ;
     body : string ;

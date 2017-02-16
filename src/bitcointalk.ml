@@ -28,9 +28,61 @@ module Board = struct
   } [@@deriving xml,fields]
 end
 
+module Time = struct
+  open Core.Std
+
+  type t = Time_ns.t
+
+  let month_of_string = function
+  | "January" -> Month.Jan
+  | "February" -> Month.Feb
+  | "March" -> Month.Mar
+  | "April" -> Month.Apr
+  | "May" -> Month.May
+  | "June" -> Month.Jun
+  | "July" -> Month.Jul
+  | "August" -> Month.Aug
+  | "September" -> Month.Sep
+  | "October" -> Month.Oct
+  | "November" -> Month.Nov
+  | "December" -> Month.Dec
+  | s -> invalid_argf "month_of_string: %s" s ()
+
+  let time_of_string s =
+    let zone = Time_ns.Zone.utc in
+    if String.subo s ~pos:0 ~len:5 = "Today" then
+      let date = Date.today ~zone in
+      match String.split s ~on:'t' with
+      | _ :: time :: _ ->
+          let time = Time_ns.Ofday.of_string @@ String.strip time in
+          Time_ns.of_date_ofday ~zone date time
+      | _ -> invalid_arg "time_of_string"
+    else
+    match String.split s ~on:',' with
+    | [ monthday ; year ; time ] ->
+        let y = Int.of_string @@ String.strip year in
+        begin match String.split monthday ~on:' ' with
+        | [month ; day] ->
+            let m = month_of_string @@ String.strip month in
+            let d = Int.of_string @@ String.strip day in
+            let time = Time_ns.Ofday.of_string @@ String.strip time in
+            let date = Date.create_exn ~y ~m ~d in
+            Time_ns.of_date_ofday ~zone date time
+        | _ -> invalid_arg "time_of_string"
+        end
+    | _ -> invalid_arg "time_of_string"
+
+  let to_xml t = Csvfields.Xml.xml_of_string @@ Time_ns.to_string t
+  let of_xml xml = match Csvfields.Xml.contents xml with
+  | Some time -> time_of_string time
+  | None -> invalid_arg "Time.of_xml"
+
+  let xsd = []
+end
+
 module Article = struct
   type t = {
-    time : string ;
+    time : Time.t ;
     id : int ;
     subject : string ;
     body : string ;
@@ -43,7 +95,7 @@ end
 
 module Recent_post = struct
   type t = {
-    time : string ;
+    time : Time.t ;
     id : int ;
     subject : string ;
     body : string ;
