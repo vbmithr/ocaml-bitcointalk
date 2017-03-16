@@ -1,0 +1,11 @@
+(library
+ ((name        bitcointalk)
+  (public_name bitcointalk)
+  (modules (bitcointalk))
+  (preprocess (pps (ppx_fields_conv ppx_xml_conv)))
+  (libraries (core))))
+
+(executables
+ ((names (btpump))
+  (modules (btpump))
+  (libraries (bitcointalk cohttp.async))))

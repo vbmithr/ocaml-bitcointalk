@@ -35,7 +35,7 @@ module Board : sig
 end
 
 module Time : sig
-  open Core.Std
+  open Core
   type t = Time_ns.t [@@deriving xml]
 end
 

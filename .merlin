@@ -1,6 +1,0 @@
-PKG bytes uri fieldslib csvfields ppx_driver.ocamlbuild ppx_fields_conv ppx_xml_conv
-PKG core async cohttp.async
-FLG -w -40
-S src
-S test
-B _build/**

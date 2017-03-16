@@ -29,7 +29,7 @@ module Board = struct
 end
 
 module Time = struct
-  open Core.Std
+  open Core
 
   type t = Time_ns.t
 

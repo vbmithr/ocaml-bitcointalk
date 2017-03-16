@@ -1,6 +1,6 @@
 all:
-	./build
+	jbuilder build @install src/btpump.exe
 
 .PHONY: clean
 clean:
-	./build clean
+	rm -rf _build
