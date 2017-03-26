@@ -7,13 +7,11 @@ license: "ISC"
 dev-repo: "https://github.com/vbmithr/bitcointalk.git"
 bug-reports: "https://github.com/vbmithr/bitcointalk/issues"
 tags: []
-available: [ ocaml-version >= "4.01.0"]
+available: [ ocaml-version >= "4.03.0"]
 depends: [
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
   "jbuilder" {build}
-  "core"
-  "ppx_xml_conv"
+  "core" {>= "114.35+03"}
+  "ppx_xml_conv" {>= "114.35+03"}
 ]
 depopts: []
 build:[[ "jbuilder" "build" "@install" ]]
