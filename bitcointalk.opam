@@ -1,17 +1,16 @@
 opam-version: "1.2"
 maintainer: "Vincent Bernardoff <vb@luminar.eu.org>"
 authors: ["Vincent Bernardoff <vb@luminar.eu.org>"]
-homepage: "https://github.com/vbmithr/bitcointalk"
-doc: "https://vbmithr.github.io/bitcointalk/doc"
+homepage: "https://github.com/vbmithr/ocaml-bitcointalk"
 license: "ISC"
-dev-repo: "https://github.com/vbmithr/bitcointalk.git"
-bug-reports: "https://github.com/vbmithr/bitcointalk/issues"
+dev-repo: "https://github.com/vbmithr/ocaml-bitcointalk.git"
+bug-reports: "https://github.com/vbmithr/ocaml-bitcointalk/issues"
 tags: []
 available: [ ocaml-version >= "4.03.0"]
 depends: [
-  "jbuilder" {build}
-  "core" {>= "114.35+03"}
-  "ppx_xml_conv" {>= "114.35+03"}
+  "jbuilder" {build & >= "1.0+beta11"}
+  "core" {>= "v0.9.1"}
+  "ppx_xml_conv" {>= "v0.9.0"}
 ]
 depopts: []
 build:[[ "jbuilder" "build" "@install" ]]
