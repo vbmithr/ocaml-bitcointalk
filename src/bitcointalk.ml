@@ -9,7 +9,7 @@ module Person = struct
     name : string ;
     id : int ;
     link : string ;
-  } [@@deriving xml,fields]
+  } [@@deriving fields,xml]
 end
 
 module Topic = struct
@@ -17,7 +17,7 @@ module Topic = struct
     subject : string ;
     id : int ;
     link : string ;
-  } [@@deriving xml,fields]
+  } [@@deriving fields,xml]
 end
 
 module Board = struct
@@ -25,7 +25,7 @@ module Board = struct
     name : string ;
     id : int ;
     link : string ;
-  } [@@deriving xml,fields]
+  } [@@deriving fields,xml]
 end
 
 module Time = struct
@@ -90,7 +90,7 @@ module Article = struct
     topic : Topic.t ;
     board : Board.t ;
     link : string ;
-  } [@@deriving xml,fields]
+  } [@@deriving fields,xml]
 end
 
 module Recent_post = struct
@@ -104,7 +104,7 @@ module Recent_post = struct
     topic : Topic.t ;
     board : Board.t ;
     link : string ;
-  } [@@deriving xml,fields]
+  } [@@deriving fields,xml]
 end
 
 (*---------------------------------------------------------------------------

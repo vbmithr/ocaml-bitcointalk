@@ -15,7 +15,7 @@ module Person : sig
     name : string ;
     id : int ;
     link : string ;
-  } [@@deriving xml,fields]
+  } [@@deriving fields,xml]
 end
 
 module Topic : sig
@@ -23,7 +23,7 @@ module Topic : sig
     subject : string ;
     id : int ;
     link : string ;
-  } [@@deriving xml,fields]
+  } [@@deriving fields,xml]
 end
 
 module Board : sig
@@ -31,7 +31,7 @@ module Board : sig
     name : string ;
     id : int ;
     link : string ;
-  } [@@deriving xml,fields]
+  } [@@deriving fields,xml]
 end
 
 module Time : sig
@@ -49,7 +49,7 @@ module Article : sig
     topic : Topic.t ;
     board : Board.t ;
     link : string ;
-  } [@@deriving xml,fields]
+  } [@@deriving fields,xml]
 end
 
 module Recent_post : sig
@@ -63,7 +63,7 @@ module Recent_post : sig
     topic : Topic.t ;
     board : Board.t ;
     link : string ;
-  } [@@deriving xml,fields]
+  } [@@deriving fields,xml]
 end
 
 (*---------------------------------------------------------------------------
