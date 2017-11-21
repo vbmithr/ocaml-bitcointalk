@@ -8,4 +8,4 @@
 (executables
  ((names (btpump))
   (modules (btpump))
-  (libraries (bitcointalk cohttp.async))))
+  (libraries (bitcointalk cohttp-async))))

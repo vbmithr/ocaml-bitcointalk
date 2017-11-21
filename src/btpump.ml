@@ -61,7 +61,7 @@ let command =
     +> flag "-logfile" (optional string) ~doc:"filename Path of the log file (log/btpump.log)"
     +> flag "-loglevel" (optional_with_default 1 int) ~doc:"1-3 loglevel"
   in
-  Command.async ~summary:"BitcoinTalk pumper" spec main
+  Command.async_spec ~summary:"BitcoinTalk pumper" spec main
 
 let () = Command.run command
 
